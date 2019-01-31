@@ -1,3 +1,10 @@
+;; init-basic.el --- Initialize basic configurations.  -*- lexical-binding: t -*-
+
+;;; Commentary:
+;;
+;; Basic configuration.
+;;
+
 ;;; Code:
 
 ;; (eval-when-compile
@@ -6,7 +13,6 @@
 
 ;; Start server
 (use-package server
-
   :ensure nil
   :hook (after-init . server-mode))
 
@@ -51,6 +57,8 @@
 (autoload 'save-current-configuration "revive" "Save status" t)
 (autoload 'resume "revive" "Resume Emacs" t)
 (autoload 'wipe "revive" "Wipe Emacs" t)
+
+(winner-mode t)
 
 (use-package recentf
   :ensure nil
@@ -107,28 +115,28 @@
 ;; Functions
 ;;
 
-(defvar winstack-stack '()
-  "A Stack holding window configurations.
-  Use `winstack-push' and
-  `winstack-pop' to modify it.")
+;; (defvar winstack-stack '()
+;;   "A Stack holding window configurations.
+;;   Use `winstack-push' and
+;;   `winstack-pop' to modify it.")
 
-(defun winstack-push()
-  "Push the current window configuration onto `winstack-stack'."
-  (interactive)
-  (if (and (window-configuration-p (first winstack-stack))
-           (compare-window-configurations (first winstack-stack) (current-window-configuration)))
-      (message "Current config already pushed")
-    (progn (push (current-window-configuration) winstack-stack)
-           (message (concat "pushed " (number-to-string
-                                       (length (window-list (selected-frame)))) " frame config")))))
+;; (defun winstack-push()
+;;   "Push the current window configuration onto `winstack-stack'."
+;;   (interactive)
+;;   (if (and (window-configuration-p (first winstack-stack))
+;;            (compare-window-configurations (first winstack-stack) (current-window-configuration)))
+;;       (message "Current config already pushed")
+;;     (progn (push (current-window-configuration) winstack-stack)
+;;            (message (concat "pushed " (number-to-string
+;;                                        (length (window-list (selected-frame)))) " frame config")))))
 
-(defun winstack-pop()
-  "Pop the last window configuration off `winstack-stack' and apply it."
-  (interactive)
-  (if (first winstack-stack)
-      (progn (set-window-configuration (pop winstack-stack))
-             (message "popped"))
-    (message "End of window stack")))
+;; (defun winstack-pop()
+;;   "Pop the last window configuration off `winstack-stack' and apply it."
+;;   (interactive)
+;;   (if (first winstack-stack)
+;;       (progn (set-window-configuration (pop winstack-stack))
+;;              (message "popped"))
+;;     (message "End of window stack")))
 
 (defconst user-init-dir
   (cond ((boundp 'user-emacs-directory)

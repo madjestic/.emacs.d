@@ -1,3 +1,12 @@
+;; init-ui.el --- Initialize ui configurations.  -*- lexical-binding: t -*-
+
+;;; Commentary:
+;;
+;; UI configuration.
+;;
+
+;;; Code:
+
 ;; Bars
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -24,7 +33,6 @@
   :init
   (setq display-time-24hr-format t)
   (setq display-time-day-and-date t))
-
 
 (provide 'init-ui)
 

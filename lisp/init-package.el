@@ -1,4 +1,5 @@
-;;; init-package.el --- Initialize package configurations.	-*- lexical-binding: t -*-
+;; init-package.el --- Initialize package configurations.  -*- lexical-binding: t -*-
+
 ;;; Commentary:
 ;;
 ;; Emacs Package management configurations.

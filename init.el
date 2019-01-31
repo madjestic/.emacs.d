@@ -52,3 +52,5 @@
 (require 'init-package)
 (require 'init-basic)
 (require 'init-vcs)
+(require 'init-c)
+(require 'init-company)
