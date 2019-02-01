@@ -16,6 +16,44 @@
   :ensure nil
   :hook (after-init . server-mode))
 
+;; Helm
+(use-package helm
+  :demand t
+  :config
+  (require 'helm-config)
+  (require 'helm)
+  :bind (("M-x"      . helm-M-x)
+  	 ("C-c h o"  . helm-occur)
+  	 ("<f1> SPC" . helm-all-mark-rings) ; I modified the keybinding 
+  	 ("M-y"      . helm-show-kill-ring)
+  	 ("C-c h x"  . helm-register)    ; C-x r SPC and C-x r j)
+  	 ("C-c h g"   . helm-google-suggest)
+  	 ("C-c h M-:" . helm-eval-expression-with-eldoc)
+  	 ("C-x C-f"   . helm-find-files)
+  	 ("C-x b"     . helm-mini)      ; *<major-mode> or /<dir> or !/<dir-not-desired> or @<regexp>
+  	 :map helm-map
+  	 ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+  	 ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal
+  	 ("C-z" . helm-select-action) ; list actions using C-z
+  	 :map minibuffer-local-map
+  	 ("C-c C-l" . helm-minibuffer-history))
+  :hook (after-init . helm-mode)
+  :init (setq helm-buffers-fuzzy-matching           t
+	      helm-M-x-fuzzy-match                  t
+  	      helm-recentf-fuzzy-match              t
+  	      helm-semantic-fuzzy-match             t
+	      helm-imenu-fuzzy-match                t
+	      helm-locate-fuzzy-match               t
+	      helm-apropos-fuzzy-match              t
+	      helm-lisp-fuzzy-completion            t
+	      helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+	      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+	      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+	      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+	      helm-ff-file-name-history-use-recentf t
+	      helm-echo-input-in-header-line        t
+	      helm-autoresize-max-height            0
+	      helm-autoresize-min-height            20))
 ;; History
 (use-package saveplace
   :ensure nil
@@ -42,21 +80,21 @@
   :ensure nil
   :hook (after-init . savehist-mode)
   :init (setq enable-recursive-minibuffers t ; Allow commands in minibuffers
-              history-length 1000
-              savehist-additional-variables '(mark-ring
-                                              global-mark-ring
-                                              search-ring
-                                              regexp-search-ring
-                                              extended-command-history)
-              savehist-autosave-interval 300))
+	      history-length 1000
+	      savehist-additional-variables '(mark-ring
+					      global-mark-ring
+					      search-ring
+					      regexp-search-ring
+					      extended-command-history)
+	      savehist-autosave-interval 300))
 
 (use-package session
   :ensure nil
   :hook (after-init-hook . session-initialize)
-  :init ())
-(autoload 'save-current-configuration "revive" "Save status" t)
-(autoload 'resume "revive" "Resume Emacs" t)
-(autoload 'wipe "revive" "Wipe Emacs" t)
+  :init ()
+  (autoload 'save-current-configuration "revive" "Save status" t)
+  (autoload 'resume "revive" "Resume Emacs" t)
+  (autoload 'wipe "revive" "Wipe Emacs" t))
 
 (winner-mode t)
 
@@ -115,28 +153,28 @@
 ;; Functions
 ;;
 
-;; (defvar winstack-stack '()
-;;   "A Stack holding window configurations.
-;;   Use `winstack-push' and
-;;   `winstack-pop' to modify it.")
+(defvar winstack-stack '()
+  "A Stack holding window configurations.
+  Use `winstack-push' and
+  `winstack-pop' to modify it.")
 
-;; (defun winstack-push()
-;;   "Push the current window configuration onto `winstack-stack'."
-;;   (interactive)
-;;   (if (and (window-configuration-p (first winstack-stack))
-;;            (compare-window-configurations (first winstack-stack) (current-window-configuration)))
-;;       (message "Current config already pushed")
-;;     (progn (push (current-window-configuration) winstack-stack)
-;;            (message (concat "pushed " (number-to-string
-;;                                        (length (window-list (selected-frame)))) " frame config")))))
+(defun winstack-push()
+  "Push the current window configuration onto `winstack-stack'."
+  (interactive)
+  (if (and (window-configuration-p (first winstack-stack))
+           (compare-window-configurations (first winstack-stack) (current-window-configuration)))
+      (message "Current config already pushed")
+    (progn (push (current-window-configuration) winstack-stack)
+           (message (concat "pushed " (number-to-string
+                                       (length (window-list (selected-frame)))) " frame config")))))
 
-;; (defun winstack-pop()
-;;   "Pop the last window configuration off `winstack-stack' and apply it."
-;;   (interactive)
-;;   (if (first winstack-stack)
-;;       (progn (set-window-configuration (pop winstack-stack))
-;;              (message "popped"))
-;;     (message "End of window stack")))
+(defun winstack-pop()
+  "Pop the last window configuration off `winstack-stack' and apply it."
+  (interactive)
+  (if (first winstack-stack)
+      (progn (set-window-configuration (pop winstack-stack))
+             (message "popped"))
+    (message "End of window stack")))
 
 (defconst user-init-dir
   (cond ((boundp 'user-emacs-directory)
@@ -167,15 +205,15 @@
   (interactive)
   (mapc 'kill-buffer 
         (delq (current-buffer) 
-              (remove-if-not 'buffer-file-name (buffer-list)))))
+	      (remove-if-not 'buffer-file-name (buffer-list)))))
 
 (defun next-word ()
-	"Goto next word."
-	(interactive)
-	(forward-word 1)
-	(forward-word 1)
-	(backward-word 1)
-	)
+  "Goto next word."
+  (interactive)
+  (forward-word 1)
+  (forward-word 1)
+  (backward-word 1)
+  )
 
 (defun truncate-lines ()
   (interactive)

@@ -10,6 +10,9 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
+;; (use-package company-next
+;;   :hook (company-mode . company-next-mode))
+
 (use-package company
   :diminish company-mode
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
