@@ -7,8 +7,8 @@
 
 ;;; Code:
 
-(eval-when-compile
-  (require 'init-custom))
+;; (eval-when-compile
+;;   (require 'init-custom))
 
 (pcase set-lsp
   ('eglot

@@ -54,6 +54,18 @@
 	      helm-echo-input-in-header-line        t
 	      helm-autoresize-max-height            0
 	      helm-autoresize-min-height            20))
+
+;; Minimap
+(use-package minimap
+  :ensure nil
+  :init (setq minimap-always-recenter  nil
+	      minimap-dedicated-window t
+	      minimap-enlarge-certain-faces (quote always)
+	      minimap-recenter-type (quote relative)
+	      minimap-update-delay 2.0
+	      minimap-width-fraction 0.1
+	      minimap-window-location (quote right)))
+
 ;; History
 (use-package saveplace
   :ensure nil
@@ -61,7 +73,8 @@
 
 (use-package recentf
   :ensure nil
-  :hook (after-init . recentf-mode)
+  :bind(("\C-x\ \C-r" . recentf-open-files))
+  :hook (after-init   . recentf-mode)
   :init
   (setq recentf-max-saved-items 200)
   (setq recentf-exclude '((expand-file-name package-user-dir)
@@ -132,6 +145,8 @@
 (global-set-key (kbd "C-M-g")      'revert-buffer)
 (global-set-key (kbd "C-x C-k")    'kill-all-dired-buffers)
 (global-set-key (kbd "C-c n")      'display-line-numbers-mode)
+(use-package iedit
+	     :bind (("C-;"      . helm-M-x)))
 (global-set-key (kbd "C-;")        'iedit-mode)
 (global-set-key (kbd "M-+")        'text-scale-increase)
 (global-set-key (kbd "M-_")        'text-scale-decrease)
@@ -140,7 +155,6 @@
 (global-set-key (kbd "M-S-<down>") 'move-text-down)
 (global-set-key (kbd "M-^")        'server-force-delete)
 (global-set-key (kbd "C-c s")      'sr-speedbar-toggle)
-;; (global-set-key (kbd "C-c m")      'minimap-toggle)
 (global-set-key (kbd "C-c M-m")    'menu-bar-mode)
 (global-set-key (kbd "C-c b")      'flymake-compile) ;; build with flymake/Makefile
 (global-set-key (kbd "C-M-y")      'secondary-dwim)
