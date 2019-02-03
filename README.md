@@ -16,7 +16,7 @@ A lean and fast emacs setup.
 	|_site-lisp/init-c.el       - C/C++ configuration.
 	|_site-lisp/init-vcs.el     - Git/VCS configuration.
 ```
-* Inspired by [Centaur Emacs](https://github.com/seagle0128/.emacs.d)
+* Inspired by [Centaur Emacs](https://github.com/seagle0128/.emacs.d), but all standard emacs without 'centaurization'.
 
 ## Installation:
 
