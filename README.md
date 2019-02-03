@@ -5,7 +5,8 @@ A lean and fast emacs setup.
 
 * C++: autocomplete based on lsp-mod, clang, irony, cquery showing functional sigs.
 * Clean and modern configuration structure:
-_init.el - theme, init chain.
+```
+|_init.el - theme, init chain.
 	|_site-lisp/init-custom.el - Custom variables and functions.
 	|_site-lisp/init-package.el - Emacs Package management configurations.
 	|_site-lisp/init-basic.el - Basic configuration.
@@ -14,7 +15,7 @@ _init.el - theme, init chain.
 	|_site-lisp/init-company.el - Company/autocomplete configuration.
 	|_site-lisp/init-c.el - C/C++ configuration.
 	|_site-lisp/init-vcs.el - Git/VCS configuration.
-
+```
 * Inspired by ![Cantaur Emacs](https://github.com/seagle0128/.emacs.d)
 
 ## Installation:
