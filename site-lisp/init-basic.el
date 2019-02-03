@@ -119,8 +119,6 @@
 ;; (autoload 'resume "revive" "Resume Emacs" t)
 ;; (autoload 'wipe "revive" "Wipe Emacs" t)
 
-(winner-mode t)
-
 (use-package recentf
   :ensure nil
   :hook (after-init . recentf-mode)

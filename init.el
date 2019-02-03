@@ -2,7 +2,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-;; (server-force-delete)
+(server-force-delete)
 (package-initialize)
 
 (custom-set-variables
@@ -112,5 +112,3 @@
 (require 'init-company)
 (require 'init-c)
 (require 'init-vcs)
-(require 'buffer-move)
-(require 'workgroups)

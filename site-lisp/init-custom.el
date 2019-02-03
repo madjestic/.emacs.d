@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 ;;
-;; Custom variables.
+;; Custom variables and functions.
 ;;
 
 ;;; Code:

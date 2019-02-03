@@ -7,6 +7,11 @@
 
 ;;; Code:
 
+;; Buffers/Windows management
+(require 'workgroups)
+(require 'buffer-move)
+(winner-mode t)
+
 ;; Misc
 (cua-mode t)
 
