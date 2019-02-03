@@ -7,17 +7,8 @@
 
 ;;; Code:
 
-(use-package paredit
-;;  :hook (after-init . paredit-mode)
-  :init())
-
-(use-package smartparens
-;;  :hook (after-init . smartparens-mode)
-  :init())
-
-;;n(setq paredit-mode t) - seems to interfere with lsp-mode
-;; (setq paredit-mode t
-;;       smartparens-mode t)
+(use-package paredit)
+(use-package smartparens)
 
 (provide 'init-program)
 

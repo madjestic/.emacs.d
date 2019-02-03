@@ -182,7 +182,9 @@
 (global-set-key (kbd "C-x M-p")    'winstack-pop)
 (global-set-key (kbd "M-j")        'tabbar-backward)
 (global-set-key (kbd "M-k")        'tabbar-forward)
-
+(global-set-key (kbd "C-x O")      (lambda ()
+                                     (interactive)
+                                     (other-window -1)))
 ;;
 ;; Functions
 ;;
