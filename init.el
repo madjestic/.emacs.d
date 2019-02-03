@@ -2,7 +2,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(server-force-delete)
+;; (server-force-delete)
 (package-initialize)
 
 (custom-set-variables
@@ -22,17 +22,13 @@
  '(company-tooltip-limit 12)
  '(custom-safe-themes (quote (default)))
  '(display-line-numbers-type (quote relative))
- ;; '(global-company-mode t)
- ;; '(helm-M-x-fuzzy-match t)
- ;; '(helm-mode t)
  '(menu-bar-mode -1)
- '(package-archives
-   (quote
-    (("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.milkbox.net/packages/")
-     ("melpa-stable" . "http://stable.melpa.org/packages/")
-     ("org" . "http://orgmode.org/elpa/"))))
-;; '(package-selected-packages (quote (use-package iedit)))
+ ;; '(package-archives
+ ;;   (quote
+ ;;    (("gnu" . "https://elpa.gnu.org/packages/")
+ ;;     ("melpa" . "http://melpa.milkbox.net/packages/")
+ ;;     ("melpa-stable" . "http://stable.melpa.org/packages/")
+ ;;     ("org" . "http://orgmode.org/elpa/"))))
  '(truncate-lines -1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -40,6 +36,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#2d3743" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
+ '(tabbar-button ((t (:background "#2d3743"))))
+ '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "black"))))
+ '(tabbar-default ((t (:inherit variable-pitch :background "#2d3743" :foreground "grey75"))))
+ '(tabbar-highlight ((t (:background "#2d3743" :foreground "aquamarine"))))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "dark orange"))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "medium sea green"))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default))))
  '(company-tooltip ((t (:background "dark slate gray" :foreground "black" :height 1.0))))
  '(company-tooltip-selection ((t (:background "orange1" :height 1.0))))
  '(cursor ((t (:background "#707080"))))
@@ -102,8 +106,8 @@
 
 (require 'init-custom)
 (require 'init-package)
-(require 'init-ui)
 (require 'init-basic)
+(require 'init-ui)
 (require 'init-lsp)
 (require 'init-company)
 (require 'init-c)

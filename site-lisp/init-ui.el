@@ -18,7 +18,7 @@
 ;; Line and Column
 (setq-default fill-column 80)
 (setq column-number-mode t)
-(setq line-number-mode t)
+;; (setq line-number-mode t)
 
 ;; Mouse & Smooth Scroll
 ;; Scroll one line at a time (less "jumpy" than defaults)
@@ -28,6 +28,12 @@
       scroll-margin 0
       scroll-conservatively 100000)
 
+(setq redisplay-dont-pause t
+      scroll-margin 5
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+
 ;; Display Time
 (use-package time
   :ensure nil
@@ -36,6 +42,12 @@
   :init
   (setq display-time-24hr-format t)
   (setq display-time-day-and-date t))
+
+(setq redisplay-dont-pause t
+      scroll-margin 5
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
 
 (provide 'init-ui)
 

@@ -7,6 +7,8 @@
 
 ;;; Code:
 
+(require 'init-program)
+
 ;; C/C++ Mode
 (use-package cc-mode
   :ensure nil
@@ -20,6 +22,13 @@
   (use-package modern-cpp-font-lock
     :diminish
     :init (modern-c++-font-lock-global-mode t))
+  (use-package paredit
+    :hook (after-init . paredit-mode)
+    :init (paredit-mode t))
+  (use-package smartparens
+    :hook (after-init . smartparens-mode)
+    :init (smartparens-mode t))
+
 
 (use-package cquery
   :config((setq cquery-executable "/usr/local/bin/cquery")))
@@ -61,6 +70,8 @@
     :defines company-backends
     :init (cl-pushnew 'company-c-headers company-backends)))
 
+(paredit-mode t)
+(smartparens-mode t)
 (provide 'init-c)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

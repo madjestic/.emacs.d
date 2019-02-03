@@ -55,9 +55,19 @@
 	      helm-autoresize-max-height            0
 	      helm-autoresize-min-height            20))
 
+;; Tabbar
+(use-package tabbar
+  :hook (after-init . tabbar-mode)
+  :init (setq tabbar-buffer-groups-function 'tabbar-buffer-groups
+  	      tabbar-background-color nil
+  	      tabbar-mwheel-mode t
+  	      tabbar-use-images nil)
+  )
+
 ;; Minimap
 (use-package minimap
   :ensure nil
+  :bind (("C-c m" . minimap-mode))
   :init (setq minimap-always-recenter  nil
 	      minimap-dedicated-window t
 	      minimap-enlarge-certain-faces (quote always)
@@ -104,10 +114,10 @@
 (use-package session
   :ensure nil
   :hook (after-init-hook . session-initialize)
-  :init ()
-  (autoload 'save-current-configuration "revive" "Save status" t)
-  (autoload 'resume "revive" "Resume Emacs" t)
-  (autoload 'wipe "revive" "Wipe Emacs" t))
+  :init ())
+;; (autoload 'save-current-configuration "revive" "Save status" t)
+;; (autoload 'resume "revive" "Resume Emacs" t)
+;; (autoload 'wipe "revive" "Wipe Emacs" t)
 
 (winner-mode t)
 
@@ -123,21 +133,13 @@
 ;; Hotkeys
 ;;
 
-(global-set-key (kbd "C-c l")     'org-store-link)
-(global-set-key (kbd "C-c a")     'org-agenda)
-(global-set-key (kbd "C-c C-S-l") 'org-store-link)
-(global-set-key (kbd "C-c C-S-c") 'org-capture)
-(global-set-key (kbd "C-c C-S-a") 'org-agenda)
-(global-set-key (kbd "C-c C-S-b") 'org-iswitchb)
-(global-set-key (kbd "C-c m")     'minimap-toggle)
-(global-set-key (kbd "C-c a")     'org-agenda)
-
-
-;; Session hotkeys
-(define-key ctl-x-map "S" 'save-current-configuration)
-(define-key ctl-x-map "R" 'resume)
-(define-key ctl-x-map "K" 'wipe)
-
+(global-set-key (kbd "C-c l")      'org-store-link)
+(global-set-key (kbd "C-c a")      'org-agenda)
+(global-set-key (kbd "C-c C-S-l")  'org-store-link)
+(global-set-key (kbd "C-c C-S-c")  'org-capture)
+(global-set-key (kbd "C-c C-S-a")  'org-agenda)
+(global-set-key (kbd "C-c C-S-b")  'org-iswitchb)
+(global-set-key (kbd "C-c a")      'org-agenda)
 (global-set-key (kbd "C-c C-r")    'find-alternate-file)
 (global-set-key (kbd "C-c h")      'vline-mode)
 (global-set-key (kbd "C-c t")      'toggle-truncate-lines)
@@ -146,7 +148,7 @@
 (global-set-key (kbd "C-x C-k")    'kill-all-dired-buffers)
 (global-set-key (kbd "C-c n")      'display-line-numbers-mode)
 (use-package iedit
-	     :bind (("C-;"      . helm-M-x)))
+	     :bind (("C-;"         . helm-M-x)))
 (global-set-key (kbd "C-;")        'iedit-mode)
 (global-set-key (kbd "M-+")        'text-scale-increase)
 (global-set-key (kbd "M-_")        'text-scale-decrease)
@@ -154,7 +156,27 @@
 (global-set-key (kbd "M-S-<up>")   'move-text-up)
 (global-set-key (kbd "M-S-<down>") 'move-text-down)
 (global-set-key (kbd "M-^")        'server-force-delete)
-(global-set-key (kbd "C-c s")      'sr-speedbar-toggle)
+(use-package neotree
+  :bind (("C-c f" . neotree-toggle)))
+(use-package sr-speedbar
+  :bind (("C-c s" . sr-speedbar-toggle))
+  :hook (after-create-hook . (quote (speedbar-frame-reposition-smartly)))
+  :config (setq sr-speedbar-right-side nil
+		speedbar-show-unknown-files t
+		sr-speedbar-width 35
+		sr-speedbar-max-width 35
+		speedbar-frame-parameters
+		(quote
+		 ((minibuffer)
+		  (width . 10)
+		  (border-width . 0)
+		  (menu-bar-lines . 0)
+		  (tool-bar-lines . 0)
+		  (unsplittable . t)
+		  (left-fringe . 0)))
+		speedbar-use-images nil
+		speedbar-hide-button-brackets-flag t
+		))
 (global-set-key (kbd "C-c M-m")    'menu-bar-mode)
 (global-set-key (kbd "C-c b")      'flymake-compile) ;; build with flymake/Makefile
 (global-set-key (kbd "C-M-y")      'secondary-dwim)
@@ -166,6 +188,26 @@
 ;;
 ;; Functions
 ;;
+
+(defun tabbar-buffer-groups ()
+  "Return the list of group names the current buffer belongs to.
+This function is a custom function for tabbar-mode's tabbar-buffer-groups.
+This function group all buffers into 3 groups:
+Those Dired, those user buffer, and those emacs buffer.
+Emacs buffer are those starting with “*”."
+  (list
+   (cond
+    ((string-equal "*" (substring (buffer-name) 0 1))
+     "Emacs Buffer"
+     )
+    ((eq major-mode 'dired-mode)
+     "Dired"
+     )
+    (t
+     "User Buffer"
+     )
+    ))) 
+
 
 (defvar winstack-stack '()
   "A Stack holding window configurations.

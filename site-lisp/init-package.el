@@ -32,11 +32,10 @@
                             (not (gnutls-available-p))))
                (proto (if no-ssl "http" "https")))
           (pcase archives
-            ('melpa
-             `(,(cons "gnu"          (concat proto "://elpa.gnu.org/packages/"))
-               ,(cons "melpa"        (concat proto "://melpa.milkbox.net/packages/"))
-	       ,(cons "melpa-stable" (concat proto "://stable.melpa.org/packages/"))
-	       ,(cons "org"          (concat proto "://orgmode.org/elpa/"))))
+            ('melpa `(,(cons "gnu"          (concat proto "://elpa.gnu.org/packages/"))
+		      ,(cons "melpa"        (concat proto "://melpa.milkbox.net/packages/"))
+		      ,(cons "melpa-stable" (concat proto "://stable.melpa.org/packages/"))
+		      ,(cons "org"          (concat proto "://orgmode.org/elpa/"))))
             (archives
              (error "Unknown archives: '%s'" archives)))))
 
@@ -74,6 +73,8 @@
   (setq paradox-execute-asynchronously t)
   (setq paradox-github-token t)
   (defalias 'upgrade-packages 'paradox-upgrade-packages))
+
+(set-package-archives 'melpa)
 
 (provide 'init-package)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
