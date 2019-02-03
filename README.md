@@ -20,7 +20,7 @@ A lean and fast emacs setup.
 
 ## Installation:
 
-Make sure that the following binaries are present on your system:
+* Make sure that the following binaries are present on your system, that are needed and used by lsp server:
 
 ```
 /usr/local/bin/cquery
@@ -29,18 +29,21 @@ Make sure that the following binaries are present on your system:
 /usr/local/bin/clangd
 ```
 (or the equivalents inside `usr/bin/`)
-- that is needed and used by lsp server
 
+* Install:
 ```bash
 $ cd ~
 $ git clone https://github.com/madjestic/.emacs.d
 $ emacs
 ```
-- that should start the update process.
+After starting emacs, the update process should start automatically. No system paths used.
 
+* Byte-compile emacs directory:
 `C-u 0 M-x byte-recompile-directory` -> `~/.emacs.d/`
+
 delete `~/.emacs.d/init-basic.elc` (there are some problems with `:bind` package, making compile to fail.
 
-Enjoy!
+
+Happy Hacking!
 
 
