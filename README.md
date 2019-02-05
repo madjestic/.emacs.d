@@ -9,7 +9,7 @@ A lean and fast emacs setup.
 |_init.el - theme, init chain.
 	|_site-lisp/init-custom.el  - Custom variables and functions.
 	|_site-lisp/init-package.el - Emacs Package management configurations.
-	|_site-lisp/init-basic.el   - Basic configuration.
+	|_site-lisp/init-basic.el   - Basic configuration, hotkeys.
 	|_site-lisp/init-ui.el      - UI configuration.
 	|_site-lisp/init-lsp        - Language Server Protocol configurations.
 	|_site-lisp/init-company.el - Company/autocomplete configuration.

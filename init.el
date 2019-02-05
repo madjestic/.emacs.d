@@ -112,3 +112,4 @@
 (require 'init-company)
 (require 'init-c)
 (require 'init-vcs)
+(require 'init-circe)

@@ -78,6 +78,18 @@
                        ".ccls")
                      projectile-project-root-files-top-down-recurring))))
 
+   ;; Haskell support
+   (use-package lsp-haskell
+     :hook (haskell-mode . (lambda ()
+                             (require 'lsp-haskell)
+                             (lsp))))
+
+   ;; Python support
+   (use-package lsp-haskell
+     :hook (python-mode . (lambda ()
+                             (require 'lsp-python)
+                             (lsp))))
+   
    ;; Java support
    (use-package lsp-java
      :hook (java-mode . (lambda ()
