@@ -16,6 +16,8 @@
   :ensure nil
   :hook (after-init . server-mode))
 
+(require 'vline)
+
 ;; Helm
 (use-package helm
   :demand t
@@ -131,6 +133,7 @@
 ;; Hotkeys
 ;;
 
+(global-set-key (kbd "M-<up>")     'paredit-splice-sexp)
 (global-set-key (kbd "C-c l")      'org-store-link)
 (global-set-key (kbd "C-c a")      'org-agenda)
 (global-set-key (kbd "C-c C-S-l")  'org-store-link)

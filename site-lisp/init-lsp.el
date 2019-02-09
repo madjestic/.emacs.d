@@ -61,7 +61,12 @@
      :bind (:map lsp-ui-mode-map
                  ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
                  ([remap xref-find-references] . lsp-ui-peek-find-references)
-                 ("C-c u" . lsp-ui-imenu)))
+                 ("C-c u" . lsp-ui-imenu))
+     :config
+     (setq lsp-ui-doc-max-height 20
+	   lsp-ui-doc-max-width 50
+	   lsp-ui-sideline-ignore-duplicate t
+	   lsp-ui-peek-always-show t))
 
    (use-package company-lsp)
 
@@ -78,18 +83,27 @@
                        ".ccls")
                      projectile-project-root-files-top-down-recurring))))
 
+   ;; Python
+   (use-package lsp-python-ms
+     :ensure nil
+     :hook (python-mode . lsp)
+     :config
+
+     ;; for dev build of language server
+     (setq lsp-python-ms-dir
+           (expand-file-name "~/Projects/Python/python-language-server/output/bin/Release/"))
+     ;; for executable of language server, if it's not symlinked on your PATH
+     (setq lsp-python-ms-executable
+           "~/Projects/Python/python-language-server/output/bin/Release/gentoo-x64/publish/Microsoft.Python.LanguageServer"))
+
+
    ;; Haskell support
    (use-package lsp-haskell
      :hook (haskell-mode . (lambda ()
+			     (require 'lsp)
                              (require 'lsp-haskell)
                              (lsp))))
 
-   ;; Python support
-   (use-package lsp-haskell
-     :hook (python-mode . (lambda ()
-                             (require 'lsp-python)
-                             (lsp))))
-   
    ;; Java support
    (use-package lsp-java
      :hook (java-mode . (lambda ()

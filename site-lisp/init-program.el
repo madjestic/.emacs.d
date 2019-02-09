@@ -7,8 +7,8 @@
 
 ;;; Code:
 
-(use-package paredit)
-(use-package smartparens)
+;; (use-package paredit)
+;; (use-package smartparens)
 
 (provide 'init-program)
 
