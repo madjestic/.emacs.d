@@ -2,7 +2,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(server-force-delete)
+;; (server-force-delete)
 (package-initialize)
 
 (custom-set-variables
@@ -12,7 +12,7 @@
  ;; If there is more than one, they won't work right.
  '(border ((t nil)))
  '(browse-url-browser-function (quote browse-url-generic))
- '(browse-url-generic-program "chromium-browser" t)
+ '(browse-url-generic-program "chromium-browser")
  '(circe-default-directory "~/.circe")
  '(circe-format-self-say "me > {body}")
  '(company-dabbrev-downcase nil)
@@ -25,9 +25,24 @@
  '(company-tooltip-align-annotations t)
  '(company-tooltip-limit 12)
  '(custom-safe-themes (quote (default)))
- '(display-line-numbers-type (quote relative))
+ '(display-line-numbers-type (quote absolute))
+ '(eldoc-echo-area-use-multiline-p (quote truncate-sym-name-if-fit))
+ '(global-eldoc-mode nil)
+ '(irony-eldoc-use-unicode t)
+ '(lsp-eldoc-enable-hover t)
  '(lsp-haskell-process-path-hie "hie-wrapper")
+ '(lsp-ui-doc-header t)
+ '(lsp-ui-doc-include-signature t)
+ '(lsp-ui-doc-max-height 20)
+ '(lsp-ui-doc-max-width 50)
+ '(lsp-ui-doc-position (quote top))
+ '(lsp-ui-doc-use-childframe t)
+ '(lsp-ui-peek-always-show t)
+ '(lsp-ui-peek-fontify (quote always))
+ '(lsp-ui-sideline-ignore-duplicate t)
+ '(lsp-ui-sideline-show-hover t)
  '(menu-bar-mode -1)
+ '(neo-theme (quote arrow))
  '(truncate-lines -1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -46,6 +61,13 @@
  '(iedit-occurrence ((t (:inherit highlight))))
  '(link ((t (:foreground "dark turquoise" :underline t))))
  '(link-visited ((default (:inherit (link))) (((class color) (background light)) (:foreground "magenta4")) (((class color) (background dark)) (:foreground "violet"))))
+ '(lsp-face-highlight-read ((t (:inherit lazy-highlight :underline t))))
+ '(lsp-face-highlight-textual ((t (:inherit lazy-highlight))))
+ '(lsp-face-highlight-write ((t (:inherit lazy-highlight :slant italic))))
+ '(lsp-ui-peek-line-number ((t (:foreground "grey"))))
+ '(lsp-ui-sideline-current-symbol ((t (:foreground "orange" :box (:line-width -1 :color "white") :weight ultra-bold :height 0.99))))
+ '(lsp-ui-sideline-symbol ((t (:foreground "dark orange" :box (:line-width -1 :color "grey") :height 0.99))))
+ '(lsp-ui-sideline-symbol-info ((t (:foreground "yellow" :slant italic :height 0.99))))
  '(menu ((t (:background "#222244" :foreground "#797985" :inverse-video t))))
  '(minimap-active-region-background ((t (:background "#454857"))))
  '(minimap-font-face ((t (:height 0.1))))
@@ -104,3 +126,6 @@
 (require 'init-c)
 (require 'init-vcs)
 (require 'init-circe)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)

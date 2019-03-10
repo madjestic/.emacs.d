@@ -188,6 +188,23 @@
 (global-set-key (kbd "C-x O")      (lambda ()
                                      (interactive)
                                      (other-window -1)))
+
+(use-package openwith
+  :hook (after-init . openwith-mode)
+  :init 
+  (setq openwith-associations '(("\\.hipnc\\'" "houdini_emacs" (file))
+				("\\.hip\\'"   "houdini_emacs" (file))
+				("\\.pic\\'"   "mplay_emacs"   (file))
+				("\\.picnc\\'" "mplay_emacs"   (file))
+				("\\.3b\\'"    "3D-coat"       (file))
+				("\\.mkv\\'"   "mpv"           (file))
+				("\\.mp4\\'"   "mpv"           (file))
+				("\\.mov\\'"   "mpv"           (file))
+				("\\.avi\\'"   "mpv"           (file))
+				("\\.djvu\\'"  "djview"        (file))
+				("\\.wav\\'"   "aplay"         (file))
+				)))
+
 ;;
 ;; Functions
 ;;

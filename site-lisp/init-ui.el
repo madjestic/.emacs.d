@@ -39,6 +39,11 @@
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
 
+;; All the icons
+(use-package all-the-icons
+  :init
+  (setq all-the-icons-install-fonts t))
+
 ;; Display Time
 (use-package time
   :ensure nil
