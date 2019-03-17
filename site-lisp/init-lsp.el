@@ -98,11 +98,11 @@
 
 
    ;; Haskell support
-   (use-package lsp-haskell
-     :hook (haskell-mode . (lambda ()
-			     (require 'lsp)
-                             (require 'lsp-haskell)
-                             (lsp))))
+   ;; (use-package lsp-haskell
+   ;;   :hook (haskell-mode . (lambda ()
+   ;; 			     (require 'lsp)
+   ;;                           (require 'lsp-haskell)
+   ;;                           (lsp))))
 
    ;; Java support
    (use-package lsp-java

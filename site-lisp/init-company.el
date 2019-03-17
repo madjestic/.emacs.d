@@ -7,7 +7,7 @@
 
 ;;; Code:
 
-(use-package all-the-icons)
+;;(use-package all-the-icons
 ;;  :hook (company-box-mode . all-the-icons-install-fonts))
 
 (use-package company-box

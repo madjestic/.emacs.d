@@ -126,6 +126,11 @@
   :hook (after-init . recentf-mode)
   :init (setq recentf-max-menu-items 25))
 
+(use-package yafolding
+  :bind (("M-RET" . yafolding-toggle-element))
+  :hook (json-mode . yafolding-mode)
+  :init ())
+
 ;; PATH
 (setenv "PATH" (concat (getenv "PATH") ":~/bin"))
 

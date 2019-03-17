@@ -42,7 +42,7 @@
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-hover t)
  '(menu-bar-mode -1)
- '(neo-theme (quote arrow))
+ '(neo-theme (quote icons))
  '(truncate-lines -1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -85,9 +85,9 @@
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "black"))))
  '(tabbar-default ((t (:inherit variable-pitch :background "#2d3743" :foreground "grey75"))))
  '(tabbar-highlight ((t (:background "#2d3743" :foreground "aquamarine"))))
- '(tabbar-modified ((t (:inherit tabbar-default :foreground "dark orange"))))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "red"))))
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "medium sea green"))))
- '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "dark orange"))))
  '(tabbar-unselected ((t (:inherit tabbar-default))))
  '(tooltip ((t (:inherit variable-pitch :background "#797985" :foreground "black" :height 0.8))))
  '(vertical-border ((t (:foreground "#1d2733"))))
@@ -96,6 +96,11 @@
  '(vhdl-speedbar-package-face ((t (:foreground "Grey80" :height 0.8))))
  '(vhdl-speedbar-package-selected-face ((t (:foreground "Grey80" :underline t :height 0.8))))
  '(vline ((t (:background "#454857")))))
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+
 ;; (load-theme 'schrodinger)
 
 ;; Load path
@@ -124,8 +129,6 @@
 (require 'init-lsp)
 (require 'init-company)
 (require 'init-c)
+(require 'init-haskell)
 (require 'init-vcs)
 (require 'init-circe)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-(put 'narrow-to-region 'disabled nil)
