@@ -133,6 +133,12 @@
 
 ;; PATH
 (setenv "PATH" (concat (getenv "PATH") ":~/bin"))
+(setenv "PATH" (concat (getenv "PATH") "/home/madjestic/bin"))
+(setenv "PATH" (concat (getenv "PATH") "/home/madjestic/.local/bin"))
+;; (setenv "PATH" (concat (getenv "PATH") ""))
+;; (setenv "PATH" (concat (getenv "PATH") ""))
+;; (setenv "PATH" (concat (getenv "PATH") ""))
+;; (setenv "PATH" (concat (getenv "PATH") ""))
 
 ;;
 ;; Hotkeys
