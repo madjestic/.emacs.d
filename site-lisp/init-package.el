@@ -10,36 +10,12 @@
 (eval-when-compile)
 ;;  (require 'init-custom))
 
-;; HACK: DO NOT copy package-selected-packages to init/custom file forcibly.
-;; https://github.com/jwiegley/use-package/issues/383#issuecomment-247801751
-(defun my-save-selected-packages (&optional value)
-  "Set `package-selected-packages' to VALUE but don't save to `custom-file'."
-  (when value
-    (setq package-selected-packages value)))
-(advice-add 'package--save-selected-packages :override #'my-save-selected-packages)
-
-;;
-;; Package archive
-;;
-(defun set-package-archives (archives)
-  "Set specific package ARCHIVES repository."
-  (interactive
-   (list (intern (completing-read "Choose package archives: "
-                                  '(gnu melpa melpa-stable org)))))
-
-  (setq package-archives
-        (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                            (not (gnutls-available-p))))
-               (proto (if no-ssl "http" "https")))
-          (pcase archives
-            ('melpa `(,(cons "gnu"          (concat proto "://elpa.gnu.org/packages/"))
-		      ,(cons "melpa"        (concat proto "://melpa.milkbox.net/packages/"))
-		      ,(cons "melpa-stable" (concat proto "://stable.melpa.org/packages/"))
-		      ,(cons "org"          (concat proto "://orgmode.org/elpa/"))))
-            (archives
-             (error "Unknown archives: '%s'" archives)))))
-
-  (message "Set package archives to '%s'." archives))
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
@@ -48,6 +24,7 @@
 
 ;; Setup `use-package'
 (unless (package-installed-p 'use-package)
+  (package-initialize)
   (package-refresh-contents)
   (package-install 'use-package))
 
@@ -73,8 +50,6 @@
   (setq paradox-execute-asynchronously t)
   (setq paradox-github-token t)
   (defalias 'upgrade-packages 'paradox-upgrade-packages))
-
-(set-package-archives 'melpa)
 
 (provide 'init-package)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
