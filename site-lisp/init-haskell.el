@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 ;;
-;; Python configuration.
+;; Haskell configuration.
 ;;
 
 ;;; Code:
@@ -22,6 +22,19 @@
 (add-hook 'haskell-mode-hook #'smartparens-mode)
 (add-hook 'haskell-mode-hook #'paredit-mode)
 (add-hook 'haskell-mode-hook #'rainbow-delimiters-mode)
+
+;; (use-package dante
+;;   :ensure t
+;;   :after haskell-mode
+;;   :commands 'dante-mode
+;;   :init
+;;   (add-hook 'haskell-mode-hook 'flycheck-mode)
+;;   ;; OR for flymake support:
+;;   (add-hook 'haskell-mode-hook 'flymake-mode)
+;;   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
+
+;;   (add-hook 'haskell-mode-hook 'dante-mode)
+;;   )
 
 ;; (add-hook 'haskell-mode-hook
 ;; 	  (lambda()

@@ -40,9 +40,10 @@
       scroll-preserve-screen-position 1)
 
 ;; All the icons
-;;(use-package all-the-icons
+(use-package all-the-icons)
+;; (use-package all-the-icons
 ;;  :init
-;;  (setq all-the-icons-install-fonts t))
+;;  (setq all-the-icons-install-fonts f))
 
 ;; Display Time
 (use-package time

@@ -3,7 +3,7 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 ;; (server-force-delete)
-(package-initialize)
+;; (package-initialize)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -15,8 +15,8 @@
  '(browse-url-generic-program "chromium-browser")
  '(circe-default-directory "~/.circe")
  '(circe-format-self-say "me > {body}")
- '(company-dabbrev-downcase nil t)
- '(company-dabbrev-ignore-case nil t)
+ '(company-dabbrev-downcase nil)
+ '(company-dabbrev-ignore-case nil)
  '(company-idle-delay 0.2)
  '(company-minimum-prefix-length 2)
  '(company-quickhelp-delay 0.8)
@@ -32,7 +32,6 @@
  '(global-eldoc-mode nil)
  '(irony-eldoc-use-unicode t)
  '(lsp-eldoc-enable-hover t)
- '(lsp-haskell-process-path-hie "hie-wrapper")
  '(lsp-ui-doc-header t)
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-max-height 20)
@@ -45,8 +44,11 @@
  '(lsp-ui-sideline-show-hover t)
  '(menu-bar-mode -1)
  '(neo-theme 'icons)
+ '(org-roam-directory "/home/madjestic/org-roam")
+ '(org-roam-index-file "/home/madjestic/org-roam/index.org")
+ '(org-roam-tag-sources '(prop all-directories))
  '(package-selected-packages
-   '(magit circe rainbow-delimiters smartparens paredit company-c-headers company-quickhelp company-box openwith sr-speedbar neotree move-text iedit yafolding tabbar helm paradox diminish use-package))
+   '(projectile-ripgrep ripgrep helm-projectile projectile helm-rg rg swiper-helm json-mode company-glsl glsl-mode flycheck-irony company-math math-symbol-lists graphviz-dot-mode all-the-icons org-journal deft xah-find org-pdftools pdf-tools ac-octave org-download company-org-roam org-roam org-roam-server company-irony-c-headers company-irony irony-eldoc irony cquery modern-cpp-font-lock flymake-rust flycheck-rust cargo magit circe rainbow-delimiters smartparens paredit company-c-headers company-quickhelp company-box openwith sr-speedbar neotree move-text iedit yafolding tabbar helm paradox diminish use-package))
  '(truncate-lines -1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -71,7 +73,7 @@
  '(highlight ((t (:background "chocolate"))))
  '(hl-line ((t (:inherit highlight :background "#454857"))))
  '(iedit-occurrence ((t (:inherit highlight))))
- '(line-number-current-line ((t (:background "dark gray" :foreground "black"))))
+ '(line-number-current-line ((t (:inherit default))))
  '(link ((t (:foreground "dark turquoise" :underline t))))
  '(link-visited ((default (:inherit (link))) (((class color) (background light)) (:foreground "magenta4")) (((class color) (background dark)) (:foreground "violet"))))
  '(lsp-face-highlight-read ((t (:inherit lazy-highlight :underline t))))
@@ -89,7 +91,7 @@
  '(rainbow-delimiters-depth-1-face ((t (:foreground "deep sky blue"))))
  '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
  '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "green"))))
- '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
+ '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta"))))
  '(rainbow-delimiters-depth-5-face ((t (:inherit rainbow-delimiters-base-face :foreground "orange"))))
  '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
  '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "white"))))
@@ -152,7 +154,8 @@
 ;(require 'init-lsp)
 (require 'init-company)
 (require 'init-c)
-(require 'init-haskell)
+;(require 'init-haskell)
+(require 'init-rust)
 ;(require 'init-agda)
 (require 'init-vcs)
 (require 'init-circe)
