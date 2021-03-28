@@ -16,8 +16,6 @@
   :ensure nil
   :hook (after-init . server-mode))
 
-(require 'vline)
-
 ;; Helm
 (use-package helm
   :demand t
@@ -57,6 +55,10 @@
 	      helm-echo-input-in-header-line        t
 	      helm-autoresize-max-height            0
 	      helm-autoresize-min-height            20))
+
+(use-package helm-rg
+  :hook (after-init . helm-mode)
+  :init())
 
 ;; Tabbar
 (use-package tabbar
@@ -142,6 +144,19 @@
 ;; (setenv "PATH" (concat (getenv "PATH") ""))
 
 ;;
+;; Buffers
+;;
+
+(windmove-default-keybindings)
+(use-package buffer-move)
+
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+
+
+;;
 ;; Hotkeys
 ;;
 
@@ -160,7 +175,7 @@
 (global-set-key (kbd "C-M-g")      'revert-buffer)
 (global-set-key (kbd "C-x C-k")    'kill-all-dired-buffers)
 (global-set-key (kbd "C-c M-n")    'display-line-numbers-mode)
-(global-set-key (kbd "C-x M-o")    'previous-window-any-frame)
+(global-set-key (kbd "C-x M-o")    'previous-multiframe-window)
 
 (use-package iedit
 	     :bind (("C-;"         . helm-M-x)))
@@ -171,8 +186,17 @@
 (global-set-key (kbd "M-S-<up>")   'move-text-up)
 (global-set-key (kbd "M-S-<down>") 'move-text-down)
 (global-set-key (kbd "M-^")        'server-force-delete)
+
 (use-package neotree
-  :bind (("C-c f" . neotree-toggle)))
+  :bind (("C-c f" . neotree-toggle))
+  :init
+  (require 'neotree)
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq neo-smart-open t)
+  (setq neo-window-fixed-size nil)
+  (setq neo-window-width 40))
+
 (use-package sr-speedbar
   :bind (("C-c s" . sr-speedbar-toggle))
   :hook (after-create-hook . (quote (speedbar-frame-reposition-smartly)))
@@ -313,11 +337,30 @@ Emacs buffer are those starting with “*”."
 ;;; Org-Roam ;;;
 ;;;;;;;;;;;;;;;;
 
+;; -*- emacs-lisp -*-
+(unless package-archive-contents    ;; Refresh the packages descriptions
+  (package-refresh-contents))
+(setq package-load-list '(all))     ;; List of packages to load
+(unless (package-installed-p 'org)  ;; Make sure the Org package is
+  (package-install 'org))           ;; installed, install it if not
+(package-initialize)                ;; Initialize & Install Package
+;; (setq org-...) 
+
+(use-package org-journal
+  :after org
+  :bind
+  ("C-c n n" . org-journal-new-entry)
+  :custom
+  (org-journal-date-prefix "#+title: ")
+  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-dir "/home/madjestic/org-roam/")
+  (org-journal-date-format "%A, %d %B %Y"))
+
 (use-package org-roam
       :hook
       (after-init . org-roam-mode)
       :custom
-      (org-roam-directory "/path/to/org-files/")
+      (org-roam-directory "/home/madjestic/org-roam/")
       :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam) ;; toggle links window
                ("C-c n f" . org-roam-find-file)
@@ -337,16 +380,6 @@ Emacs buffer are those starting with “*”."
   (deft-default-extension "org")
   (deft-directory "/home/madjestic/org-roam/"))
 
-(use-package org-journal
-  :after org
-  :bind
-  ("C-c n n" . org-journal-new-entry)
-  :custom
-  (org-journal-date-prefix "#+title: ")
-  (org-journal-file-format "%Y-%m-%d.org")
-  (org-journal-dir "/home/madjestic/org-roam/")
-  (org-journal-date-format "%A, %d %B %Y"))
-
 (use-package org-download
   :after org
   :bind
@@ -354,6 +387,7 @@ Emacs buffer are those starting with “*”."
         (("s-Y" . org-download-screenshot)
          ("s-y" . org-download-yank))))
 
+(use-package pdf-tools)
 
 (provide 'init-basic)
 

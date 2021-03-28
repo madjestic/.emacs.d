@@ -11,8 +11,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(border ((t nil)))
- '(browse-url-browser-function 'browse-url-generic)
- '(browse-url-generic-program "chromium-browser")
+ '(browse-url-browser-function (quote browse-url-generic))
+ '(browse-url-generic-program "google-chrome-stable")
  '(circe-default-directory "~/.circe")
  '(circe-format-self-say "me > {body}")
  '(company-dabbrev-downcase nil)
@@ -24,11 +24,9 @@
  '(company-require-match nil)
  '(company-tooltip-align-annotations t)
  '(company-tooltip-limit 12)
- '(custom-safe-themes '(default))
- '(display-line-numbers-type 'absolute)
- '(eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit)
- '(exec-path
-   '("/home/madjestic/bin" "/home/madjestic/.local/bin" "/usr/local/lib" "/usr/lib/llvm/8/bin" "/usr/lib/llvm/7/bin" "/usr/lib/llvm/6/bin" "/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin" "/opt/bin" "/usr/games/bin" "/opt/cuda/bin" "/opt/cuda/libnvvp" "/usr/libexec/emacs/26.2/x86_64-pc-linux-gnu"))
+ '(custom-safe-themes (quote (default)))
+ '(display-line-numbers-type (quote absolute))
+ '(eldoc-echo-area-use-multiline-p (quote truncate-sym-name-if-fit))
  '(global-eldoc-mode nil)
  '(irony-eldoc-use-unicode t)
  '(lsp-eldoc-enable-hover t)
@@ -36,19 +34,19 @@
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-max-height 20)
  '(lsp-ui-doc-max-width 50)
- '(lsp-ui-doc-position 'top)
+ '(lsp-ui-doc-position (quote top))
  '(lsp-ui-doc-use-childframe t)
  '(lsp-ui-peek-always-show t)
- '(lsp-ui-peek-fontify 'always)
+ '(lsp-ui-peek-fontify (quote always))
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-hover t)
  '(menu-bar-mode -1)
- '(neo-theme 'icons)
- '(org-roam-directory "/home/madjestic/org-roam")
+ '(neo-theme (quote icons))
  '(org-roam-index-file "/home/madjestic/org-roam/index.org")
- '(org-roam-tag-sources '(prop all-directories))
+ '(org-roam-tag-sources (quote (prop all-directories)))
  '(package-selected-packages
-   '(projectile-ripgrep ripgrep helm-projectile projectile helm-rg rg swiper-helm json-mode company-glsl glsl-mode flycheck-irony company-math math-symbol-lists graphviz-dot-mode all-the-icons org-journal deft xah-find org-pdftools pdf-tools ac-octave org-download company-org-roam org-roam org-roam-server company-irony-c-headers company-irony irony-eldoc irony cquery modern-cpp-font-lock flymake-rust flycheck-rust cargo magit circe rainbow-delimiters smartparens paredit company-c-headers company-quickhelp company-box openwith sr-speedbar neotree move-text iedit yafolding tabbar helm paradox diminish use-package))
+   (quote
+    (company-jedi jedi jedi-core buffer-move use-package minimap lsp-haskell lsp-ui lsp-mode vline async org-journal haskell-mode haskell-snippets visual-fill-column helm-gtags projectile-ripgrep ripgrep helm-projectile projectile helm-rg rg swiper-helm json-mode company-glsl glsl-mode flycheck-irony company-math math-symbol-lists graphviz-dot-mode all-the-icons deft xah-find org-pdftools pdf-tools ac-octave org-download company-org-roam org-roam org-roam-server company-irony-c-headers company-irony irony-eldoc irony cquery modern-cpp-font-lock flymake-rust flycheck-rust cargo magit circe rainbow-delimiters smartparens paredit company-c-headers company-quickhelp company-box openwith sr-speedbar neotree move-text iedit yafolding tabbar helm paradox diminish)))
  '(truncate-lines -1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -69,6 +67,10 @@
  '(custom-button ((t (:background "black" :foreground "gray60"))))
  '(custom-button-mouse ((t (:background "grey60" :foreground "black"))))
  '(custom-button-unraised ((t (:inherit nil :background "black"))))
+ '(ediff-even-diff-A ((t (:extend t :background "dark red"))))
+ '(ediff-even-diff-B ((t (:extend t :background "olive drab"))))
+ '(ediff-odd-diff-A ((t (:extend t :background "brown"))))
+ '(ediff-odd-diff-B ((t (:extend t :background "dark olive green"))))
  '(fringe ((t (:background "#2d3743"))))
  '(highlight ((t (:background "chocolate"))))
  '(hl-line ((t (:inherit highlight :background "#454857"))))
@@ -126,14 +128,12 @@
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
-;; (load-theme 'schrodinger)
-
 ;; Load path
 ;; Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 (defun update-load-path (&rest _)
   "Update `load-path'."
   (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
-  (push (expand-file-name "lisp" user-emacs-directory) load-path)
+;;  (push (expand-file-name "lisp" user-emacs-directory) load-path)
   (push "." load-path))
 
 (defun add-subdirs-to-load-path (&rest _)
@@ -147,15 +147,14 @@
 
 (update-load-path)
 
-(require 'init-custom)
+;;(require 'init-custom)
 (require 'init-package)
 (require 'init-basic)
 (require 'init-ui)
-;(require 'init-lsp)
 (require 'init-company)
-(require 'init-c)
-;(require 'init-haskell)
-(require 'init-rust)
+;(require 'init-c)
+(require 'init-haskell)
+;(require 'init-rust)
 ;(require 'init-agda)
 (require 'init-vcs)
-(require 'init-circe)
+;(require 'init-circe)

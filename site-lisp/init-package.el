@@ -7,10 +7,11 @@
 
 ;;; Code:
 
-(eval-when-compile)
+;;(eval-when-compile)
 ;;  (require 'init-custom))
 
 (require 'package)
+(add-to-list 'package-archives '("org"   . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
@@ -24,7 +25,6 @@
 
 ;; Setup `use-package'
 (unless (package-installed-p 'use-package)
-  (package-initialize)
   (package-refresh-contents)
   (package-install 'use-package))
 
@@ -43,13 +43,13 @@
 (use-package bind-key)
 
 ;; Extensions
-(use-package paradox
-  :commands paradox-enable
-  :hook (after-init . paradox-enable)
-  :init
-  (setq paradox-execute-asynchronously t)
-  (setq paradox-github-token t)
-  (defalias 'upgrade-packages 'paradox-upgrade-packages))
+;; (use-package paradox
+;;   :commands paradox-enable
+;;   :hook (after-init . paradox-enable)
+;;   :init
+;;   (setq paradox-execute-asynchronously t)
+;;   (setq paradox-github-token t)
+;;   (defalias 'upgrade-packages 'paradox-upgrade-packages))
 
 (provide 'init-package)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

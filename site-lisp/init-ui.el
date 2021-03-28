@@ -8,8 +8,8 @@
 ;;; Code:
 
 ;; Buffers/Windows management
-(require 'workgroups)
-(require 'buffer-move)
+;(require 'workgroups)
+;(require 'buffer-move)
 (winner-mode t)
 
 ;; Misc
@@ -59,6 +59,9 @@
       scroll-step 1
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
+
+(use-package rainbow-delimiters)
+(use-package smartparens)
 
 (provide 'init-ui)
 
