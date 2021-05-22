@@ -46,8 +46,9 @@
  '(org-roam-tag-sources (quote (prop all-directories)))
  '(package-selected-packages
    (quote
-    (company-jedi jedi jedi-core buffer-move use-package minimap lsp-haskell lsp-ui lsp-mode vline async org-journal haskell-mode haskell-snippets visual-fill-column helm-gtags projectile-ripgrep ripgrep helm-projectile projectile helm-rg rg swiper-helm json-mode company-glsl glsl-mode flycheck-irony company-math math-symbol-lists graphviz-dot-mode all-the-icons deft xah-find org-pdftools pdf-tools ac-octave org-download company-org-roam org-roam org-roam-server company-irony-c-headers company-irony irony-eldoc irony cquery modern-cpp-font-lock flymake-rust flycheck-rust cargo magit circe rainbow-delimiters smartparens paredit company-c-headers company-quickhelp company-box openwith sr-speedbar neotree move-text iedit yafolding tabbar helm paradox diminish)))
- '(truncate-lines -1))
+    (go-mode company-jedi jedi jedi-core buffer-move use-package minimap lsp-haskell lsp-ui lsp-mode vline async org-journal haskell-mode haskell-snippets visual-fill-column helm-gtags projectile-ripgrep ripgrep helm-projectile projectile helm-rg rg swiper-helm json-mode company-glsl glsl-mode flycheck-irony company-math math-symbol-lists graphviz-dot-mode all-the-icons deft xah-find org-pdftools pdf-tools ac-octave org-download company-org-roam org-roam org-roam-server company-irony-c-headers company-irony irony-eldoc irony cquery modern-cpp-font-lock flymake-rust flycheck-rust cargo magit circe rainbow-delimiters smartparens paredit company-c-headers company-quickhelp company-box openwith sr-speedbar neotree move-text iedit yafolding tabbar helm paradox diminish)))
+ '(truncate-lines -1)
+ '(visible-bell t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

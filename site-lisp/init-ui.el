@@ -20,6 +20,9 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Disable PCSpeaker
+(setq visible-bell t)
+
 ;; Line and Column
 (setq-default fill-column 80)
 (setq column-number-mode t)
