@@ -15,6 +15,7 @@ A lean and fast emacs setup.
 	|_site-lisp/init-company.el - Company/autocomplete configuration.
 	|_site-lisp/init-c.el       - C/C++ configuration.
 	|_site-lisp/init-vcs.el     - Git/VCS configuration.
+	|_site-lisp/init-haskell.el - haskell configuration
 ```
 * Inspired by [Centaur Emacs](https://github.com/seagle0128/.emacs.d), but all standard emacs without 'centaurization'.
 

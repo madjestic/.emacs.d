@@ -7,9 +7,23 @@
 
 ;;; Code:
 
-(require 'init-program)
+;; (require 'init-program)
 
 ;; C/C++ Mode
+(use-package helm-gtags
+  :demand t
+  :config
+  (require 'helm-gtags)
+  :bind (("C-c M-." . helm-gtags-find-tag))
+  :hook ((c-mode c++-mode objc-mode asm-mode) . helm-gtags-mode)
+  :init (setq helm-gtags-ignore-case           t
+	      helm-gtags-auto-update           t
+	      helm-gtags-use-input-at-cursor   t
+	      helm-gtags-pulse-at-cursor       t
+	      ;;helm-gtags-prefix-key "\C-cg"
+	      helm-gtags-suggested-key-mapping t))
+
+
 (use-package cc-mode
   :ensure nil
   :bind (:map c-mode-base-map
@@ -28,7 +42,6 @@
   ;; (use-package smartparens
   ;;   :hook (after-init . smartparens-mode)
   ;;   :init (smartparens-mode t))
-
 
   (use-package cquery
     :config((setq cquery-executable "/usr/local/bin/cquery")))

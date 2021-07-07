@@ -7,13 +7,13 @@
 
 ;;; Code:
 
+(use-package haskell-mode)
 (use-package lsp-mode)
 (use-package lsp-ui)
-;;(use-package lsp-haskell)
+(use-package lsp-haskell
+  :init
+  (add-hook 'haskell-mode-hook #'lsp))
 
-;; (require 'lsp)
-;; (require 'lsp-haskell)
-;; (add-hook 'haskell-mode-hook #'lsp)
 ;; (add-hook 'haskell-mode-hook
 ;;  (lambda ()
 ;;    (local-set-key [f5] #'haskell-compile)))
