@@ -169,7 +169,8 @@
 (global-set-key (kbd "C-c C-S-b")  'org-iswitchb)
 (global-set-key (kbd "C-c a")      'org-agenda)
 (global-set-key (kbd "C-c C-r")    'find-alternate-file)
-(global-set-key (kbd "C-c h")      'vline-mode)
+;; (global-set-key (kbd "C-c h")      'vline-mode)
+(global-set-key (kbd "C-c h")      'xhair-mode)
 (global-set-key (kbd "C-c t")      'toggle-truncate-lines)
 (global-set-key (kbd "M-#")        'next-word)
 (global-set-key (kbd "C-M-g")      'revert-buffer)
@@ -226,6 +227,9 @@
 (global-set-key (kbd "C-x O")      (lambda ()
                                      (interactive)
                                      (other-window -1)))
+
+;; Haskell Mode
+;;(global-set-key (kbd "C-c C-c")    'haskell-compile)
 
 (use-package openwith
   :hook (after-init . openwith-mode)
@@ -344,7 +348,9 @@ Emacs buffer are those starting with “*”."
 (unless (package-installed-p 'org)  ;; Make sure the Org package is
   (package-install 'org))           ;; installed, install it if not
 (package-initialize)                ;; Initialize & Install Package
-;; (setq org-...) 
+;; (setq org-...)
+
+(setq org-roam-v2-ack t)
 
 (use-package org-journal
   :after org
@@ -386,6 +392,9 @@ Emacs buffer are those starting with “*”."
   (:map org-mode-map
         (("s-Y" . org-download-screenshot)
          ("s-y" . org-download-yank))))
+
+(setq org-todo-keywords
+      '((sequence "TODO" "IN-PROGRESS" "BLOCKED" "CANCELED" "DONE")))
 
 (use-package pdf-tools)
 

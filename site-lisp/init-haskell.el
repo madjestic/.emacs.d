@@ -7,20 +7,26 @@
 
 ;;; Code:
 
-(use-package haskell-mode)
+(use-package haskell-mode
+  :hook(after-init . haskell-mode)
+  :bind(("C-c C-c" . haskell-compile))
+  :init())
+
 (use-package lsp-mode)
 (use-package lsp-ui)
 (use-package lsp-haskell
+  :config
+  ;; (require 'smartparens)
+  ;; (require 'paredit)
+  ;; (require 'rainbow-delimiters)
   :init
-  (add-hook 'haskell-mode-hook #'lsp))
-
-;; (add-hook 'haskell-mode-hook
-;;  (lambda ()
-;;    (local-set-key [f5] #'haskell-compile)))
-;; (setq lsp-haskell-process-path-hie "hie-wrapper")
+  (add-hook 'haskell-mode-hook #'lsp)
+  ;; (setq smartparens-mode        t
+  ;; 	paredit-mode            t
+  ;; 	rainbow-delimiters-mode t)
+  )
 
 (provide 'init-haskell)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-haskell.el ends here
-
