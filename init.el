@@ -2,7 +2,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-;; (server-force-delete)
+(server-force-delete)
 ;; (package-initialize)
 
 (custom-set-variables
@@ -11,7 +11,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(border ((t nil)))
- '(browse-url-browser-function 'browse-url-generic)
+ '(browse-url-browser-function (quote browse-url-generic))
  '(browse-url-generic-program "google-chrome-stable")
  '(circe-default-directory "~/.circe")
  '(circe-format-self-say "me > {body}")
@@ -24,9 +24,9 @@
  '(company-require-match nil)
  '(company-tooltip-align-annotations t)
  '(company-tooltip-limit 12)
- '(custom-safe-themes '(default))
- '(display-line-numbers-type 'absolute)
- '(eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit)
+ '(custom-safe-themes (quote (default)))
+ '(display-line-numbers-type (quote absolute))
+ '(eldoc-echo-area-use-multiline-p (quote truncate-sym-name-if-fit))
  '(global-eldoc-mode nil)
  '(irony-eldoc-use-unicode t)
  '(lsp-eldoc-enable-hover t)
@@ -34,18 +34,19 @@
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-max-height 20)
  '(lsp-ui-doc-max-width 50)
- '(lsp-ui-doc-position 'top)
+ '(lsp-ui-doc-position (quote top))
  '(lsp-ui-doc-use-childframe t)
  '(lsp-ui-peek-always-show t)
- '(lsp-ui-peek-fontify 'always)
+ '(lsp-ui-peek-fontify (quote always))
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-hover t)
  '(menu-bar-mode -1)
- '(neo-theme 'icons)
+ '(neo-theme (quote icons))
  '(org-roam-index-file "/home/madjestic/org-roam/index.org")
- '(org-roam-tag-sources '(prop all-directories))
+ '(org-roam-tag-sources (quote (prop all-directories)))
  '(package-selected-packages
-   '(org go-mode company-jedi jedi jedi-core buffer-move use-package minimap lsp-haskell lsp-ui lsp-mode vline async org-journal haskell-mode haskell-snippets visual-fill-column helm-gtags projectile-ripgrep ripgrep helm-projectile projectile helm-rg rg swiper-helm json-mode company-glsl glsl-mode flycheck-irony company-math math-symbol-lists graphviz-dot-mode all-the-icons deft xah-find org-pdftools pdf-tools ac-octave org-download company-org-roam org-roam org-roam-server company-irony-c-headers company-irony irony-eldoc irony cquery modern-cpp-font-lock flymake-rust flycheck-rust cargo magit circe rainbow-delimiters smartparens paredit company-c-headers company-quickhelp company-box openwith sr-speedbar neotree move-text iedit yafolding tabbar helm paradox diminish))
+   (quote
+    (lsp-jedi flycheck flycheck-haskell org go-mode company-jedi jedi jedi-core buffer-move use-package minimap lsp-haskell lsp-ui lsp-mode vline async org-journal haskell-mode haskell-snippets visual-fill-column helm-gtags projectile-ripgrep ripgrep helm-projectile projectile helm-rg rg swiper-helm json-mode company-glsl glsl-mode flycheck-irony company-math math-symbol-lists graphviz-dot-mode all-the-icons deft xah-find org-pdftools pdf-tools ac-octave org-download company-org-roam org-roam org-roam-server company-irony-c-headers company-irony irony-eldoc irony cquery modern-cpp-font-lock flymake-rust flycheck-rust cargo magit circe rainbow-delimiters smartparens paredit company-c-headers company-quickhelp company-box openwith sr-speedbar neotree move-text iedit yafolding tabbar helm paradox diminish)))
  '(truncate-lines -1)
  '(visible-bell t)
  '(warning-minimum-level :error))
@@ -92,6 +93,13 @@
  '(minimap-font-face ((t (:height 0.1))))
  '(popup-tip-face ((t (:background "#797985" :foreground "black" :height 1.0))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "deep sky blue"))))
+ '(rainbow-delimiters-depth-10-face ((t (:inherit rainbow-delimiters-base-face :foreground "blue"))))
+ '(rainbow-delimiters-depth-11-face ((t (:inherit rainbow-delimiters-base-face :foreground "dark violet"))))
+ '(rainbow-delimiters-depth-12-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta"))))
+ '(rainbow-delimiters-depth-13-face ((t (:inherit rainbow-delimiters-base-face :foreground "indian red"))))
+ '(rainbow-delimiters-depth-14-face ((t (:inherit rainbow-delimiters-base-face :foreground "sienna"))))
+ '(rainbow-delimiters-depth-15-face ((t (:inherit rainbow-delimiters-base-face :foreground "goldenrod"))))
+ '(rainbow-delimiters-depth-16-face ((t (:inherit rainbow-delimiters-base-face :foreground "lime green"))))
  '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
  '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "green"))))
  '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta"))))
@@ -99,6 +107,7 @@
  '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
  '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "white"))))
  '(rainbow-delimiters-depth-8-face ((t (:inherit rainbow-delimiters-base-face :foreground "black"))))
+ '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "gray"))))
  '(rainbow-delimiters-unmatched-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
  '(region ((t (:background "blue3"))))
  '(speedbar-button-face ((t (:foreground "green3" :height 0.8))))
@@ -134,7 +143,6 @@
 (defun update-load-path (&rest _)
   "Update `load-path'."
   (push (expand-file-name "site-lisp" user-emacs-directory) load-path)
-;;  (push (expand-file-name "lisp" user-emacs-directory) load-path)
   (push "." load-path))
 
 (defun add-subdirs-to-load-path (&rest _)
@@ -148,14 +156,15 @@
 
 (update-load-path)
 
-;;(require 'init-custom)
+(require 'init-custom)
 (require 'init-package)
 (require 'init-basic)
 (require 'init-ui)
 (require 'init-company)
 (require 'init-c)
 (require 'init-haskell)
-;(require 'init-rust)
-;(require 'init-agda)
+(require 'init-python)
 (require 'init-vcs)
+;(require 'init-rust)
+(require 'init-agda)
 ;(require 'init-circe)
