@@ -11,7 +11,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(border ((t nil)))
- '(browse-url-browser-function (quote browse-url-generic))
+ '(browse-url-browser-function 'browse-url-generic)
  '(browse-url-generic-program "google-chrome-stable")
  '(circe-default-directory "~/.circe")
  '(circe-format-self-say "me > {body}")
@@ -24,9 +24,10 @@
  '(company-require-match nil)
  '(company-tooltip-align-annotations t)
  '(company-tooltip-limit 12)
- '(custom-safe-themes (quote (default)))
- '(display-line-numbers-type (quote absolute))
- '(eldoc-echo-area-use-multiline-p (quote truncate-sym-name-if-fit))
+ '(custom-safe-themes '(default))
+ '(dired-listing-switches "-laht")
+ '(display-line-numbers-type 'absolute)
+ '(eldoc-echo-area-use-multiline-p 'truncate-sym-name-if-fit)
  '(global-eldoc-mode nil)
  '(irony-eldoc-use-unicode t)
  '(lsp-eldoc-enable-hover t)
@@ -34,19 +35,19 @@
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-max-height 20)
  '(lsp-ui-doc-max-width 50)
- '(lsp-ui-doc-position (quote top))
+ '(lsp-ui-doc-position 'top)
  '(lsp-ui-doc-use-childframe t)
  '(lsp-ui-peek-always-show t)
- '(lsp-ui-peek-fontify (quote always))
+ '(lsp-ui-peek-fontify 'always)
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-hover t)
  '(menu-bar-mode -1)
- '(neo-theme (quote icons))
+ '(neo-theme 'icons)
  '(org-roam-index-file "/home/madjestic/org-roam/index.org")
- '(org-roam-tag-sources (quote (prop all-directories)))
+ '(org-roam-tag-sources '(prop all-directories))
  '(package-selected-packages
-   (quote
-    (lsp-jedi flycheck flycheck-haskell org go-mode company-jedi jedi jedi-core buffer-move use-package minimap lsp-haskell lsp-ui lsp-mode vline async org-journal haskell-mode haskell-snippets visual-fill-column helm-gtags projectile-ripgrep ripgrep helm-projectile projectile helm-rg rg swiper-helm json-mode company-glsl glsl-mode flycheck-irony company-math math-symbol-lists graphviz-dot-mode all-the-icons deft xah-find org-pdftools pdf-tools ac-octave org-download company-org-roam org-roam org-roam-server company-irony-c-headers company-irony irony-eldoc irony cquery modern-cpp-font-lock flymake-rust flycheck-rust cargo magit circe rainbow-delimiters smartparens paredit company-c-headers company-quickhelp company-box openwith sr-speedbar neotree move-text iedit yafolding tabbar helm paradox diminish)))
+   '(company-glsl glsl-mode lsp-mode yasnippet lsp-treemacs helm-lsp projectile hydra flycheck company avy which-key helm-xref dap-mode))
+ '(pdf-view-midnight-colors '("#839496" . "dark slate gray"))
  '(truncate-lines -1)
  '(visible-bell t)
  '(warning-minimum-level :error))
@@ -55,7 +56,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#2d3743" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#2d3743" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
  '(agda2-highlight-datatype-face ((t (:foreground "SpringGreen"))))
  '(agda2-highlight-function-face ((t (:foreground "LightSkyBlue"))))
  '(agda2-highlight-inductive-constructor-face ((t (:foreground "NavajoWhite"))))
@@ -63,6 +64,7 @@
  '(agda2-highlight-module-face ((t (:foreground "PaleGreen"))))
  '(agda2-highlight-primitive-type-face ((t (:foreground "white"))))
  '(agda2-highlight-string-face ((t (:foreground "LightSalmon"))))
+ '(ansi-color-blue ((t (:background "deep sky blue" :foreground "deep sky blue"))))
  '(company-tooltip ((t (:background "dark slate gray" :foreground "black" :height 1.0))))
  '(company-tooltip-selection ((t (:background "orange1" :height 1.0))))
  '(cursor ((t (:background "#707080"))))
@@ -156,12 +158,15 @@
 
 (update-load-path)
 
+;(all-the-icons-install-fonts f)
+
 (require 'init-custom)
 (require 'init-package)
 (require 'init-basic)
 (require 'init-ui)
 (require 'init-company)
 (require 'init-c)
+(require 'init-cpp)
 (require 'init-haskell)
 (require 'init-python)
 (require 'init-vcs)

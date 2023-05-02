@@ -20,7 +20,7 @@
 (use-package helm
   :demand t
   :config
-  (require 'helm-config)
+  ;;(require 'helm-config)
   (require 'helm)
   :bind (("M-x"      . helm-M-x)
   	 ("C-c M-o"  . helm-occur)
@@ -172,7 +172,6 @@
 (global-set-key (kbd "C-M-g")      'revert-buffer)
 (global-set-key (kbd "C-x C-k")    'kill-all-dired-buffers)
 (global-set-key (kbd "C-c M-n")    'display-line-numbers-mode)
-(global-set-key (kbd "C-x M-o")    'previous-multiframe-window)
 
 (use-package iedit
 	     :bind (("C-;"         . helm-M-x)))
@@ -220,9 +219,12 @@
 (global-set-key (kbd "C-x M-p")    'winstack-pop)
 (global-set-key (kbd "M-j")        'tabbar-backward)
 (global-set-key (kbd "M-k")        'tabbar-forward)
-(global-set-key (kbd "C-x O")      (lambda ()
-                                     (interactive)
-                                     (other-window -1)))
+(global-set-key (kbd "C-x M-o")    'previous-multiframe-window)
+(global-set-key (kbd "C-x o")      'next-multiframe-window)
+;; (global-set-key (kbd "C-x o")      (lambda ()
+;;                                      (interactive)
+;;                                      (other-window -1)))
+
 
 ;; Haskell Mode
 ;;(global-set-key (kbd "C-c C-c")    'haskell-compile)
@@ -393,6 +395,11 @@ Emacs buffer are those starting with “*”."
       '((sequence "TODO" "IN-PROGRESS" "BLOCKED" "CANCELED" "DONE")))
 
 (use-package pdf-tools)
+
+(all-the-icons-install-fonts t)
+;(async-shell-command
+;(shell-command "fc-cache -f")
+
 
 (provide 'init-basic)
 
