@@ -29,7 +29,7 @@
 (add-hook 'agda-mode-hook #'paredit-mode)
 (add-hook 'agda-mode-hook #'rainbow-delimiters-mode)
 
-(require 'agda2-highlight)
+;(require 'agda2-highlight)
 
 ;; auto-load agda-mode for .agda and .lagda.md
 (setq auto-mode-alist

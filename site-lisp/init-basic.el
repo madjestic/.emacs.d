@@ -13,6 +13,7 @@
 
 ;; Start server
 (use-package server
+  :demand t
   :ensure nil
   :hook (after-init . server-mode))
 
@@ -59,6 +60,8 @@
 (use-package helm-rg
   :hook (after-init . helm-mode)
   :init())
+
+
 
 ;; Tabbar
 (use-package tabbar
@@ -117,17 +120,13 @@
 	      savehist-autosave-interval 300))
 
 (use-package session
+  :demand t
   :ensure nil
   :hook (after-init-hook . session-initialize)
   :init ())
 ;; (autoload 'save-current-configuration "revive" "Save status" t)
 ;; (autoload 'resume "revive" "Resume Emacs" t)
 ;; (autoload 'wipe "revive" "Wipe Emacs" t)
-
-(use-package recentf
-  :ensure nil
-  :hook (after-init . recentf-mode)
-  :init (setq recentf-max-menu-items 25))
 
 (use-package yafolding
   :bind (("M-RET" . yafolding-toggle-element))
@@ -212,6 +211,7 @@
 		speedbar-use-images nil
 		speedbar-hide-button-brackets-flag t
 		))
+
 (global-set-key (kbd "C-c M-m")    'menu-bar-mode)
 (global-set-key (kbd "C-c b")      'flymake-compile) ;; build with flymake/Makefile
 (global-set-key (kbd "C-M-y")      'secondary-dwim)
@@ -219,6 +219,7 @@
 (global-set-key (kbd "C-x M-p")    'winstack-pop)
 (global-set-key (kbd "M-j")        'tabbar-backward)
 (global-set-key (kbd "M-k")        'tabbar-forward)
+(global-set-key (kbd "C-x C-o")    'previous-multiframe-window)
 (global-set-key (kbd "C-x M-o")    'previous-multiframe-window)
 (global-set-key (kbd "C-x o")      'next-multiframe-window)
 ;; (global-set-key (kbd "C-x o")      (lambda ()
@@ -396,7 +397,9 @@ Emacs buffer are those starting with “*”."
 
 (use-package pdf-tools)
 
-(all-the-icons-install-fonts t)
+(require 'dired-x)
+
+;(all-the-icons-install-fonts t)
 ;(async-shell-command
 ;(shell-command "fc-cache -f")
 

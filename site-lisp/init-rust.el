@@ -26,7 +26,7 @@
 (use-package cargo)
 (use-package cargo)
 (use-package flycheck-rust)
-(use-package flymake-rust)
+;(use-package flymake-rust)
 (use-package rust-mode)
 
 (provide 'init-rust)

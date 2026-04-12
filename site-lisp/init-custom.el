@@ -7,12 +7,7 @@
 
 ;;; Code:
 
-;; (defcustom set-lsp 'lsp-mode
-;;   "Set language server."
-;;   :type '(choice
-;;           (const :tag "LSP Mode" 'lsp-mode)
-;;           (const :tag "eglot" 'eglot)
-;;           nil))
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (provide 'init-custom)
 
