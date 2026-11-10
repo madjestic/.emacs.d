@@ -81,7 +81,8 @@
 	      minimap-enlarge-certain-faces (quote always)
 	      minimap-recenter-type (quote relative)
 	      minimap-update-delay 2.0
-	      minimap-width-fraction 0.1
+	      minimap-width-fraction 0.05
+	      minimap-minimum-width nil
 	      minimap-window-location (quote right)))
 
 ;; History

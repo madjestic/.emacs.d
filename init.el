@@ -166,6 +166,7 @@
 (require 'init-package)
 (require 'init-basic)
 (require 'init-ui)
+(require 'init-minimap)
 (require 'init-company)
 (require 'init-c)
 ;;(require 'init-cpp)
