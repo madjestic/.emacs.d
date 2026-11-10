@@ -73,9 +73,31 @@
 (set-fontset-font t 'symbol "Symbola" nil 'append)
 
 ;; Transparency
-(set-frame-parameter nil 'alpha (list 100 60))
+;; (set-frame-parameter nil 'alpha (list 100 60))
+
+;; Modern Org Mode
+;; Option 1: Per buffer
+(add-hook 'org-mode-hook #'org-modern-mode)
+(add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+
+;; Option 2: Globally
+(with-eval-after-load 'org (global-org-modern-mode))
 
 (provide 'init-ui)
+
+;; Modus Themes
+(use-package modus-themes
+  :ensure t
+  :config
+  ;; Your customizations here.  All customizations must be evaluated
+  ;; BEFORE loading the theme.  Reload the theme for new customizations
+  ;; to take effect.
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil)
+
+  (modus-themes-load-theme 'modus-operandi)
+
+  (define-key global-map (kbd "<f5>") #'modus-themes-toggle))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-ui.el ends here

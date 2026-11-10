@@ -11,15 +11,12 @@
 (use-package lsp-ui)
 (use-package lsp-haskell
   :config
-  ;; (require 'smartparens)
-  ;; (require 'paredit)
-  ;; (require 'rainbow-delimiters)
   :init
   (add-hook 'haskell-mode-hook #'lsp)
   (setq lsp-ui-doc-header                t
 	lsp-ui-doc-include-signature     t
-	lsp-ui-doc-max-height            20
-	lsp-ui-doc-max-width             50
+	lsp-ui-doc-max-height            40
+	lsp-ui-doc-max-width             80
 	lsp-ui-doc-position              'top
 	lsp-ui-doc-use-childframe        t
 	lsp-ui-peek-always-show          t
@@ -29,9 +26,10 @@
 	)
   )
 
-(add-hook 'haskell-mode-hook #'smartparens-mode)
-(add-hook 'haskell-mode-hook #'paredit-mode)
-(add-hook 'haskell-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'haskell-mode-hook #'smartparens-mode)
+;; (add-hook 'haskell-mode-hook #'paredit-mode)
+;; (add-hook 'haskell-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'haskell-mode-hook #'yas-minor-mode)
 
 (setq haskell-process-type 'cabal-repl)  ; or 'cabal-repl
    (setq haskell-process-auto-import-loaded-modules t)
@@ -39,7 +37,11 @@
    (setq haskell-tags-on-save nil)  ; Let HLS handle tags
 
 (use-package haskell-mode
-  :hook(after-init . haskell-mode)
+  :hook((after-init . haskell-mode)
+	(haskell-mode . smartparens-mode)
+	(haskell-mode . paredit-mode)
+	(haskell-mode . rainbow-delimiters-mode)
+	(haskell-mode . yas-minor-mode))
   :bind(("C-c C-c" . haskell-compile)
 	("C-S-i"   . lsp-lens-mode)
 	)

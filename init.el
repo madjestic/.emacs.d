@@ -1,7 +1,14 @@
-;; Added by Package.el.  This must come before configurations of
+;; Added by Package.el.  This must come before configurations of  
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+
+;; `transient-define-prefix' is a macro used at load time by some package
+;; autoloads (e.g. ai-code), but `transient' is not loaded before those
+;; autoloads are processed, causing `void-function transient-define-prefix'.
+;; Require it here, before anything else, so it is always defined first.
+(require 'transient)
+
 (server-force-delete)
 ;; (package-initialize)
 
@@ -35,14 +42,14 @@
  '(org-roam-index-file "/home/madjestic/org-roam/index.org")
  '(org-roam-tag-sources '(prop all-directories))
  '(package-selected-packages
-   '(all-the-icons buffer-move buttercup cargo circe company-box company-c-headers
-		   company-glsl company-quickhelp copilot cquery deft diminish
-		   flycheck-rust ggtags glsl-mode haskell-mode haskell-snippets
-		   helm-gtags helm-rg iedit lsp-haskell lsp-ui magit
-		   modern-cpp-font-lock move-text neotree openwith org-download
-		   org-journal ormolu paredit pdf-tools rainbow-delimiters
-		   rust-mode session smartparens sr-speedbar tabbar with-editor
-		   yafolding yasnippet))
+   '(ai-code all-the-icons buffer-move buttercup cargo circe company-box
+	     company-c-headers company-glsl company-quickhelp copilot cquery
+	     deft diminish figlet flycheck-rust ggtags glsl-mode haskell-mode
+	     haskell-snippets helm helm-gtags helm-rg iedit lsp-haskell lsp-ui
+	     magit minimap modern-cpp-font-lock modus-themes move-text neotree
+	     openwith org-download org-journal org-mindmap org-modern ormolu
+	     paredit pdf-tools rainbow-delimiters rust-mode session smartparens
+	     sr-speedbar tabbar with-editor yafolding yasnippet))
  '(package-vc-selected-packages
    '((copilot :url "https://github.com/copilot-emacs/copilot.el" :branch "main")))
  '(pdf-view-midnight-colors '("#839496" . "dark slate gray"))
@@ -87,6 +94,7 @@
  '(minibuffer-prompt ((t (:foreground "MediumAquamarine"))))
  '(minimap-active-region-background ((t (:background "#454857"))))
  '(minimap-font-face ((t (:height 0.1))))
+ '(org-modern-label ((t (:box (:line-width (-1 . -3) :color "#2d3743") :underline nil :weight regular :width condensed))))
  '(popup-tip-face ((t (:background "#797985" :foreground "black" :height 1.0))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "deep sky blue"))))
  '(rainbow-delimiters-depth-10-face ((t (:inherit rainbow-delimiters-base-face :foreground "blue"))))
@@ -164,7 +172,7 @@
 (require 'init-haskell)
 (require 'init-python)
 (require 'init-vcs)
-(require 'init-ai)
+;;(require 'init-ai)
 ;;(require 'init-rust)
 ;;(require 'init-agda)
 ;;(require 'init-circe)

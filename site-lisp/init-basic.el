@@ -109,7 +109,7 @@
 
 (use-package savehist
   :ensure nil
-  :hook (after-init . savehist-mode)
+  ;;:hook (after-init . savehist-mode 1)
   :init (setq enable-recursive-minibuffers t ; Allow commands in minibuffers
 	      history-length 1000
 	      savehist-additional-variables '(mark-ring
@@ -117,7 +117,8 @@
 					      search-ring
 					      regexp-search-ring
 					      extended-command-history)
-	      savehist-autosave-interval 300))
+	      savehist-autosave-interval 300)
+  )
 
 (use-package session
   :demand t
@@ -171,6 +172,7 @@
 (global-set-key (kbd "C-M-g")      'revert-buffer)
 (global-set-key (kbd "C-x C-k")    'kill-all-dired-buffers)
 (global-set-key (kbd "C-c M-n")    'display-line-numbers-mode)
+(global-set-key (kbd "C-x M-0")    'jump-to-register)
 
 (use-package iedit
 	     :bind (("C-;"         . helm-M-x)))
@@ -181,6 +183,9 @@
 (global-set-key (kbd "M-S-<up>")   'move-text-up)
 (global-set-key (kbd "M-S-<down>") 'move-text-down)
 (global-set-key (kbd "M-^")        'server-force-delete)
+
+(use-package figlet
+  :init (require 'figlet))
 
 (use-package neotree
   :bind (("C-c f" . neotree-toggle))
@@ -399,10 +404,29 @@ Emacs buffer are those starting with “*”."
 
 (require 'dired-x)
 
+(use-package yasnippet
+  :hook (prog-mode . yas-minor-mode)
+  :config
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets")))
+
 ;(all-the-icons-install-fonts t)
 ;(async-shell-command
 ;(shell-command "fc-cache -f")
 
+(use-package org-mindmap
+  :vc (:url "https://github.com/krvkir/org-mindmap.git" :rev :newest)
+  :after org
+  :bind
+  (:map org-mindmap-mode-map
+        ("C-c m c" . org-mindmap-insert-child)
+        ("C-c m s" . org-mindmap-insert-sibling)
+        ("C-c m d" . org-mindmap-delete-node)
+        ("C-c m v" . org-mindmap-switch-layout)
+        ("C-c m p" . org-mindmap-switch-compaction)
+        ("C-c m m" . org-mindmap-list-to-mindmap)
+        ("C-c m l" . org-mindmap-to-list))
+  :config
+  (add-hook 'org-mode-hook #'org-mindmap-mode))
 
 (provide 'init-basic)
 
